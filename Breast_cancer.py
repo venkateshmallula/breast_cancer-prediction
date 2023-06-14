@@ -53,7 +53,5 @@ features = [[radius_mean, texture_mean, perimeter_mean, area_mean, smoothness_me
 # Perform prediction
 if st.button("Predict"):
     prediction = model.predict(features)
-    if (prediction == 0).any():
-        st.success("The tumor is Malignant")
-    else:
-        st.success("The tumor is Benign")
+        st.success(prediction)
+    
