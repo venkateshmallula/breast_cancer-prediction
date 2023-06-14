@@ -28,7 +28,7 @@ if csv_file is not None:
      # Create a button for prediction
     if st.button("Predict"):
         # Convert input values to appropriate data types
-        input_values = [float(input_data[column]) if input_data[column] != '' else np.nan for column in feature_columns]
+        input_values = [x = float(input_data]) for x in input_data]
         st.write(input_values)
         input_array = np.array([input_values], dtype=np.float32)
         st.write(input_array)
