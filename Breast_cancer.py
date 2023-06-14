@@ -28,7 +28,7 @@ if csv_file is not None:
     # Create a button for prediction
     if st.button("Predict"):
         # Convert input values to appropriate data types
-        input_array = input_data.values()
+        input_array = np.array([list(input_data.values())], dtype=np.float32)
 
         # Perform the prediction
         prediction = model.predict(input_array)
