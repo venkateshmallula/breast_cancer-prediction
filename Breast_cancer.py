@@ -30,14 +30,13 @@ if csv_file is not None:
         scaler = StandardScaler()
         # Convert input values to appropriate data types
         input_values = [float(input_data[column]) if input_data[column] != '' else np.nan for column in feature_columns]
-        input_array = np.array([input_values])
+        input_array = np.asarray(input_values)
         
         # reshape the numpy array as we are predicting for one data point
         input_data_reshaped = input_array.reshape(1,-1)
         
         # standardizing the input data
-        input_data_std = scaler.fit(input_data_reshaped)
-        input_data_std = scaler.transform(input_data_reshaped)
+        input_data_std = scaler.fit_transform(input_data_reshaped)
         
         # Perform the prediction
         prediction = model.predict(input_data_std)
