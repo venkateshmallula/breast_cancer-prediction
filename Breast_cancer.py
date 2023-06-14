@@ -2,6 +2,7 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 import pickle
+from sklearn.preprocessing import StandardScaler
 
 # Load the trained model
 from tensorflow.keras.models import load_model
@@ -35,7 +36,8 @@ if csv_file is not None:
         input_data_reshaped = input_data_as_numpy_array.reshape(1,-1)
 
         # standardizing the input data
-        input_data_std = scaler.transform(input_data_reshaped)
+        scaler = StandardScaler()
+        input_data_std = scaler.fit_transform(input_data_reshaped)
 
         prediction = model.predict(input_data_std)
         st.write(prediction)
