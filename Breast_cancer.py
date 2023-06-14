@@ -77,6 +77,8 @@ if(prediction_label[0] == 0):
 
 else:
   st.write('The tumor is Benign')
+  except ValueError:
+            st.error("Invalid input. Please enter numeric values for all features.")
 
 
 
