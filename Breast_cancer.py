@@ -6,7 +6,7 @@ tf.random.set_seed(3)
 from tensorflow import keras
 
 # Load the saved model
-loaded_model = keras.models.load_model('model.h5')
+model = keras.models.load_model('model.h5')
 
 # Set the page title
 st.title("Breast Cancer Prediction using Machine Learning")
