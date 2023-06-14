@@ -29,10 +29,16 @@ if csv_file is not None:
         # Convert input values to appropriate data types
         input_values = [float(input_data[column]) if input_data[column] != '' else np.nan for column in feature_columns]
         input_array = np.array([input_values], dtype=np.float32)
+        
+        diagnosis = ''
 
         # Perform the prediction
         prediction = model.predict(input_array)
-        diagnosis = "Malignant" if prediction.all() > 0.5 else "Benign"
+        prediction_label = [np.argmax(prediction)]
+        if (prediction[0] == 0):
+          diagnosis = "The tumor is Malignant"
+        else:
+          diagnosis = "The tumor is Benign"
 
-        # Display the diagnosis
+      
         st.success(f"The tumor is {diagnosis}")
