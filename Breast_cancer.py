@@ -36,9 +36,9 @@ if csv_file is not None:
         prediction = model.predict(input_array)
         prediction_label = [np.argmax(prediction)]
         if (prediction_label[0] == 0):
-          diagnosis = "The tumor is Malignant"
+          diagnosis = "Malignant"
         else:
-          diagnosis = "The tumor is Benign"
+          diagnosis = "Benign"
 
       
         st.success(f"The tumor is {diagnosis}")
