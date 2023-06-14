@@ -14,9 +14,12 @@ model = load_model("model.h5")
 # Set the page title
 st.title("Breast Cancer Prediction using Machine Learning")
 
-input_values = st.number_input('ENTER FEATURES SEPERATED BY COMA:')
+input_values = st.text_input('ENTER FEATURES SEPERATED BY COMA:')
 
-input_data = input_values.split(',')
+input_list = input_values.split(',')
+
+input_data = res = [eval(i) for i in input_list]
+
 
 st.write(input_data)
 
