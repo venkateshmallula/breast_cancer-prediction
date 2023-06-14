@@ -30,7 +30,9 @@ if csv_file is not None:
 
         # Perform the prediction
         prediction = model.predict(input_data)
+        st.write(prediction)
         predicted_class = np.argmax(prediction)
+        st.write(predicted_class)
 
         # Map the predicted class to diagnosis
         diagnosis = 'Malignant' if predicted_class == 0 else 'Benign'
