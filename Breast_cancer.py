@@ -41,6 +41,7 @@ if csv_file is not None:
         # Perform the prediction
         prediction = model.predict(input_data_std)
         predicted_class = np.argmax(prediction)
+        st.write(predicted_class)
 
         # Map the predicted class to diagnosis
         diagnosis = '' 
