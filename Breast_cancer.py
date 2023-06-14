@@ -18,7 +18,10 @@ input_values = st.text_input('ENTER FEATURES SEPERATED BY COMA:')
 
 input_list = input_values.split(',')
 
-input_data = list(map(int(float()), input_list))
+input_data = []
+
+for i in input_list:
+     input_data.append(float(i))
 
 
 st.write(input_data)
