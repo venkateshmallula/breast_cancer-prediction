@@ -2,6 +2,7 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 import pickle
+from sklearn.preprocessing import StandardScaler
 
 # Load the trained model
 model = pickle.load(open('breast_cancer_model.sav', 'rb'))
@@ -26,6 +27,7 @@ if csv_file is not None:
 
     # Create a button for prediction
     if st.button("Predict"):
+        scaler = StandardScaler()
         # Convert input values to appropriate data types
         input_values = [float(input_data[column]) if input_data[column] != '' else np.nan for column in feature_columns]
         input_array = np.array([input_values], dtype=np.float32)
