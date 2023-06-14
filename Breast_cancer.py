@@ -39,6 +39,11 @@ model = keras.Sequential([
                           keras.layers.Dense(20, activation='relu'),
                           keras.layers.Dense(2, activation='sigmoid')
 ])
+# compiling the Neural Network
+
+model.compile(optimizer='adam',
+              loss='sparse_categorical_crossentropy',
+              metrics=['accuracy'])
 # training the neural Network
 
 history = model.fit(X_train_std, Y_train, validation_split=0.1, epochs=10)
