@@ -24,7 +24,7 @@ if csv_file is not None:
     # Create input fields for features
     feature_columns = input_df.columns.tolist()
     input_data = input_df.values.tolist()
-    st.write(input_data)
+    st.write(input_data,len(input_data),len(input_data[0]))
 
      # Create a button for prediction
     if st.button("Predict"):
