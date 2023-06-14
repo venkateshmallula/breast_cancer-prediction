@@ -55,6 +55,7 @@ input_value = st.text_input("Enter the features separated by ','")
 
 input_list = input_value.split(',')
 
+input_values = [float(input_list[x]) if input_list[x] != '' else np.nan for x in input_value]
 input_data = np.array([input_list], dtype=np.float32)
 st.write(input_data)
 
