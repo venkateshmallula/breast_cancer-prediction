@@ -16,7 +16,7 @@ st.title("Breast Cancer Prediction using Machine Learning")
 
 input_data = st.text_input('ENTER FEATURES SEPERATED BY COMA:')
 
-    st.write(input_data,len(input_data),len(input_data[0]))
+st.write(input_data,len(input_data),len(input_data[0]))
 
      # Create a button for prediction
 if st.button("Predict"):
