@@ -35,7 +35,7 @@ if csv_file is not None:
         # Perform the prediction
         prediction = model.predict(input_array)
         prediction_label = [np.argmax(prediction)]
-        if (prediction[0] == 0):
+        if (prediction.any() == 0):
           diagnosis = "The tumor is Malignant"
         else:
           diagnosis = "The tumor is Benign"
