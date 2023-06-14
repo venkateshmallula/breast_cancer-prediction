@@ -2,7 +2,6 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 import pickle
-from sklearn.preprocessing import StandardScaler
 
 # Load the trained model
 from tensorflow.keras.models import load_model
@@ -23,22 +22,18 @@ if csv_file is not None:
 
     # Create input fields for features
     feature_columns = input_df.columns.tolist()
-    input_data = input_df.values.tolist
+    input_data = input_df.values.tolist()
+    st.write(input_data)
 
      # Create a button for prediction
-    if st.button("Predict"):
-        # Convert input values to appropriate data types
-        input_values = [float(x) for x in input_data]
-        st.write(input_values)
-        input_array = np.array([input_values], dtype=np.float32)
-        st.write(input_array)
+    if st.button("Predict")
 
         # Perform the prediction
-        prediction = model.predict(input_array)
+        prediction = model.predict(input_data)
         predicted_class = np.argmax(prediction)
 
         # Map the predicted class to diagnosis
-        diagnosis = 'Benign' if predicted_class == 0 else 'Malignant'
+        diagnosis = 'Malignant' if predicted_class == 0 else 'Benign'
 
         # Display the diagnosis
         st.success(f"The tumor is {diagnosis}")
