@@ -37,7 +37,7 @@ if csv_file is not None:
 
         # standardizing the input data
         scaler = StandardScaler()
-        input_data_std = scaler.fit_transform(input_data_reshaped)
+        input_data_std = scaler.transform(input_data_reshaped)
 
         prediction = model.predict(input_data_std)
         st.write(prediction)
