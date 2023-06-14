@@ -29,30 +29,21 @@ if csv_file is not None:
         input_value = st.text_input(column)
         input_data[column] = input_value
 
-    # Create a button for prediction
+     # Create a button for prediction
     if st.button("Predict"):
-        scaler = StandardScaler()
         # Convert input values to appropriate data types
         input_values = [float(input_data[column]) if input_data[column] != '' else np.nan for column in feature_columns]
-        input_array = np.asarray(input_values)
-        
-        # reshape the numpy array as we are predicting for one data point
-        input_data_reshaped = input_array.reshape(1,-1)
-        
-        # standardizing the input data
-        input_data_std = scaler.fit_transform(input_data_reshaped)
-        
+        input_array = np.array([input_values], dtype=np.float32)
+
         # Perform the prediction
-        prediction = model.predict(input_data_std)
+        prediction = model.predict(input_array)
         predicted_class = np.argmax(prediction)
-        st.write(predicted_class)
 
         # Map the predicted class to diagnosis
-        diagnosis = '' 
-        if predicted_class == 0:
-            diagnosis = 'Malignant'
-        else:
-            diagnosis = 'Benign'
+        diagnosis = 'Malignant' if predicted_class == 0 else 'Benign'
+
+        # Display the diagnosis
+        st.success(f"The tumor is {diagnosis}")
 
         # Display the diagnosis
         st.success(f"The tumor is {diagnosis}")
