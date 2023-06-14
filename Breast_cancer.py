@@ -1,9 +1,10 @@
 import streamlit as st
 import numpy as np
 from tensorflow import keras
+import pickle
 
 # Load the trained model
-breast_cancer_model = keras.models.load_model('breast_cancer_model.h5')
+model = pickle.load(open('breast_cancer_model.sav','rb'))
 
 # Set the page title
 st.title("Breast Cancer Prediction using TensorFlow and Keras")
