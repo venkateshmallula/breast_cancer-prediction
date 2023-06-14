@@ -33,7 +33,7 @@ if csv_file is not None:
         # Perform the prediction
         prediction = model.predict(input_array)
         st.write(prediction)
-        diagnosis = "Malignant" if prediction[0] < 0.5 else "Benign"
+        diagnosis = "Malignant" if np.any(prediction > 0.5) else "Benign"
 
         # Display the diagnosis
         st.success(f"The tumor is {diagnosis}")
