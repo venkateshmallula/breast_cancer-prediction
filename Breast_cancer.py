@@ -84,7 +84,7 @@ if st.button("Predict"):
                             concave_points_worst, symmetry_worst, fractal_dimension_worst]]
 
     # Perform the prediction
-    prediction = breast_cancer_model.predict(input_data)
+    prediction = model.predict(input_data)
     diagnosis = "Malignant" if prediction[0][0] > 0.5 else "Benign"
     
     # Display the diagnosis
