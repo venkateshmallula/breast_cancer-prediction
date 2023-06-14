@@ -5,7 +5,11 @@ import pickle
 from sklearn.preprocessing import StandardScaler
 
 # Load the trained model
-model = pickle.load(open('breast_cancer_model.sav', 'rb'))
+from tensorflow.keras.models import load_model
+
+# Load the model
+model = load_model("model.h5")
+
 
 # Set the page title
 st.title("Breast Cancer Prediction using Machine Learning")
