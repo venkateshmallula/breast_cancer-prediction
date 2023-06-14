@@ -30,6 +30,12 @@ if csv_file is not None:
         input_values = [float(input_data[column]) if input_data[column] != '' else np.nan for column in feature_columns]
         input_array = np.array([input_values], dtype=np.float32)
         
+        # reshape the numpy array as we are predicting for one data point
+        input_data_reshaped = input_array.reshape(1,-1)
+        
+        # standardizing the input data
+        input_data_std = scaler.transform(input_data_reshaped)
+        
         # Perform the prediction
         prediction = model.predict(input_array)
         predicted_class = np.argmax(prediction)
