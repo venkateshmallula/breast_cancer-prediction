@@ -43,7 +43,11 @@ if csv_file is not None:
         predicted_class = np.argmax(prediction)
 
         # Map the predicted class to diagnosis
-        diagnosis = 'Malignant' if predicted_class == 0 else 'Benign'
+        diagnosis = '' 
+        if predicted_class == 0:
+            diagnosis = 'Malignant'
+        else:
+            diagnosis = 'Benign'
 
         # Display the diagnosis
         st.success(f"The tumor is {diagnosis}")
