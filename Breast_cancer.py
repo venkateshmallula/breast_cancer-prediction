@@ -24,8 +24,6 @@ if csv_file is not None:
     for column in feature_columns:
         input_value = st.text_input(column)
         input_data[column] = input_value
-    for key,value in input_data.item():
-        st.write("{}...{}".format(key,value))
 
     # Create a button for prediction
     if st.button("Predict"):
