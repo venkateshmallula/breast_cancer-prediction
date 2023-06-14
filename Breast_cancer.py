@@ -26,7 +26,7 @@ if csv_file is not None:
     st.write(input_data)
 
      # Create a button for prediction
-    if st.button("Predict")
+    if st.button("Predict"):
 
         # Perform the prediction
         prediction = model.predict(input_data)
