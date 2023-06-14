@@ -30,7 +30,7 @@ if csv_file is not None:
         scaler = StandardScaler()
         # Convert input values to appropriate data types
         input_values = [float(input_data[column]) if input_data[column] != '' else np.nan for column in feature_columns]
-        input_array = np.array([input_values], dtype=np.float32)
+        input_array = np.array([input_values])
         
         # reshape the numpy array as we are predicting for one data point
         input_data_reshaped = input_array.reshape(1,-1)
