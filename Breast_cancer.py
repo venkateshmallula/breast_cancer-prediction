@@ -53,5 +53,5 @@ features = [[radius_mean, texture_mean, perimeter_mean, area_mean, smoothness_me
 # Perform prediction
 if st.button("Predict"):
     prediction = model.predict(features)
-        st.success(prediction)
+    st.success(prediction)
     
