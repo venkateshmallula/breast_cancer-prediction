@@ -36,10 +36,11 @@ if csv_file is not None:
         input_data_reshaped = input_array.reshape(1,-1)
         
         # standardizing the input data
-        input_data_std = scaler.fit_transform(input_data_reshaped)
+        input_data_std = scaler.fit(input_data_reshaped)
+        input_data_std = scaler.transform(input_data_reshaped)
         
         # Perform the prediction
-        prediction = model.predict(input_array)
+        prediction = model.predict(input_data_std)
         predicted_class = np.argmax(prediction)
 
         # Map the predicted class to diagnosis
