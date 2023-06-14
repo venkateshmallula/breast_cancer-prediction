@@ -9,33 +9,32 @@ model = pickle.load(open('breast_cancer_model.sav','rb'))
 # Set the page title
 st.title("Breast Cancer Prediction using TensorFlow and Keras")
 
-# Create input fields for features
-feature_names = [
-    "radius_mean", "texture_mean", "perimeter_mean", "area_mean", "smoothness_mean",
-    "compactness_mean", "concavity_mean", "concave_points_mean", "symmetry_mean",
-    "fractal_dimension_mean", "radius_se", "texture_se", "perimeter_se", "area_se",
-    "smoothness_se", "compactness_se", "concavity_se", "concave_points_se",
-    "symmetry_se", "fractal_dimension_se", "radius_worst", "texture_worst",
-    "perimeter_worst", "area_worst", "smoothness_worst", "compactness_worst",
-    "concavity_worst", "concave_points_worst", "symmetry_worst",
-    "fractal_dimension_worst"
-]
-input_data = []
+# Create a file uploader for CSV input
+csv_file = st.file_uploader("Upload CSV file", type="csv")
 
-for feature in feature_names:
-    value = st.text_input(feature)
-    input_data.append(float(value))
+if csv_file is not None:
+    # Read the uploaded CSV file
+    input_df = pd.read_csv(csv_file)
 
-# Create a button for prediction
-if st.button("Predict"):
-    # Create an input array for prediction
-    input_data = np.array([input_data])
+    # Create input fields for features
+    feature_columns = input_df.columns.tolist()
+    input_data = {}
 
-    # Perform the prediction
-    prediction = breast_cancer_model.predict(input_data)
-    diagnosis = "Malignant" if prediction[0][0] > 0.5 else "Benign"
-    
-    # Display the diagnosis
-    st.success(f"The tumor is {diagnosis}")
+    for column in feature_columns:
+        input_value = st.text_input(column)
+        input_data[column] = input_value
+
+    # Create a button for prediction
+    if st.button("Predict"):
+        # Convert input values to appropriate data types
+        input_array = np.array([list(input_data.values())], dtype=np.float32)
+
+        # Perform the prediction
+        prediction = model.predict(input_array)
+        diagnosis = "Malignant" if prediction[0][0] > 0.5 else "Benign"
+
+        # Display the diagnosis
+        st.success(f"The tumor is {diagnosis}")
+
 
 
