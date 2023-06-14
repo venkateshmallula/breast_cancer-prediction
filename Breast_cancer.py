@@ -32,7 +32,7 @@ if csv_file is not None:
 
         # Perform the prediction
         prediction = model.predict(input_array)
-        diagnosis = "Malignant" if prediction[0] > 0.5 else "Benign"
+        diagnosis = "Malignant" if prediction.all() > 0.5 else "Benign"
 
         # Display the diagnosis
         st.success(f"The tumor is {diagnosis}")
