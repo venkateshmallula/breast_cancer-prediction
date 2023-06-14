@@ -1,8 +1,7 @@
 import streamlit as st
 import numpy as np
 import pandas as pd
-import pickle
-from sklearn.preprocessing import StandardScaler
+
 
 # Load the trained model
 from tensorflow.keras.models import load_model
@@ -27,18 +26,7 @@ st.write(input_data)
      # Create a button for prediction
 if st.button("Predict"):
 
-     # change the input_data to a numpy array
-    input_data_as_numpy_array = np.asarray(input_data)
-
-    # reshape the numpy array as we are predicting for one data point
-    input_data_reshaped = input_data_as_numpy_array.reshape(1,-1)
-
-    # standardizing the input data
-    scaler = StandardScaler()
-    input_data_std = scaler.fit(input_data_reshaped)
-    input_data_std = scaler.transform(input_data_reshaped)
-        
-    prediction = model.predict(input_data_std)
+    prediction = model.predict(input_data)
     st.write(prediction)
 
     prediction_label = [np.argmax(prediction)]
