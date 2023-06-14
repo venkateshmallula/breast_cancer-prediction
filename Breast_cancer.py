@@ -6,7 +6,7 @@ import pickle
 import streamlit as st
 
 #load model
-model  = pickle.load(open('Breast_cancer_prediction.sav','rb'))
+model  = pickle.load(open('breast_cancer_model.sav','rb'))
 
 st.title("Breast Cancer Prediction")
 
