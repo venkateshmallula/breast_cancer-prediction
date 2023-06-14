@@ -14,41 +14,33 @@ model = load_model("model.h5")
 # Set the page title
 st.title("Breast Cancer Prediction using Machine Learning")
 
-# Create a file uploader for CSV input
-csv_file = st.file_uploader("Upload CSV file", type="csv")
+input_data = st.text_input('ENTER FEATURES SEPERATED BY COMA:')
 
-if csv_file is not None:
-    # Read the uploaded CSV file
-    input_df = pd.read_csv(csv_file)
-
-    # Create input fields for features
-    feature_columns = input_df.columns.tolist()
-    input_data = input_df.values.tolist()
     st.write(input_data,len(input_data),len(input_data[0]))
 
      # Create a button for prediction
-    if st.button("Predict"):
+if st.button("Predict"):
 
-        # change the input_data to a numpy array
-        input_data_as_numpy_array = np.asarray(input_data)
+     # change the input_data to a numpy array
+    input_data_as_numpy_array = np.asarray(input_data)
 
-        # reshape the numpy array as we are predicting for one data point
-        input_data_reshaped = input_data_as_numpy_array.reshape(1,-1)
+    # reshape the numpy array as we are predicting for one data point
+    input_data_reshaped = input_data_as_numpy_array.reshape(1,-1)
 
-        # standardizing the input data
-        scaler = StandardScaler()
-        input_data_std = scaler.fit(input_data_reshaped)
-        input_data_std = scaler.transform(input_data_reshaped)
+    # standardizing the input data
+    scaler = StandardScaler()
+    input_data_std = scaler.fit(input_data_reshaped)
+    input_data_std = scaler.transform(input_data_reshaped)
         
-        prediction = model.predict(input_data_std)
-        st.write(prediction)
+    prediction = model.predict(input_data_std)
+    st.write(prediction)
 
-        prediction_label = [np.argmax(prediction)]
-        st.write(prediction_label)
+    prediction_label = [np.argmax(prediction)]
+    st.write(prediction_label)
 
-        if(prediction_label[0] == 0):
+    if(prediction_label[0] == 0):
             st.success('The tumor is Malignant')
 
-        else:
+    else:
             st.success('The tumor is Benign')
 
