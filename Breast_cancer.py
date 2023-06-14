@@ -19,7 +19,7 @@ input_values = st.text_input('ENTER FEATURES SEPERATED BY COMA:')
 input_list = input_values.split(',')
 
   
-input_data = np.array([input_values], dtype=np.float32)
+input_data = np.array([input_list], dtype=np.float32)
 
 
 st.write(input_data)
