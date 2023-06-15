@@ -72,10 +72,6 @@ y=y_ros
 # Applying PCA
 # The code below has .95 for the number of components parameter.
 # It means that scikit-Learn choose the minimum number of principal components such that 95% of the variance is retained.
-import plotly.offline as py
-py.init_notebook_mode (connected=True)
-import plotly.graph_objs as go
-import plotly.tools as tls
 from sklearn.decomposition import PCA
 pca = PCA(.95)
 X_PCA=pca.fit_transform(x)
