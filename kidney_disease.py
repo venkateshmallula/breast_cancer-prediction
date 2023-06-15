@@ -9,7 +9,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 import seaborn as sns
 sns.set()
-!pip install pca
+pip install pca
 
 # loading the dataset
 data = pd.read_csv('kidney_disease.csv')
