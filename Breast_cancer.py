@@ -51,6 +51,9 @@ loss, accuracy = model.evaluate(X_test_std, Y_test)
 
 Y_pred = model.predict(X_test_std)
 
+# Set the page title
+st.title("Breast Cancer Prediction using Machine Learning")
+
 input_value = st.text_input("Enter the features separated by ','")
 
 input_list = input_value.split(',')
