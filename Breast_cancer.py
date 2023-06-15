@@ -56,7 +56,7 @@ input_value = st.text_input("Enter the features separated by ','")
 input_list = input_value.split(',')
 # Create a button for prediction
 if st.button("Predict"):
-        try:
+    try:
 
              input_values = [float(input_list[x]) if input_list[x] != '' else np.nan for x in input_value]
              input_data = np.array([input_list], dtype=np.float32)
@@ -78,9 +78,9 @@ if st.button("Predict"):
              if(prediction_label[0] == 0):
                    st.write('The tumor is Malignant')
 
-              else:
+             else:
                    st.write('The tumor is Benign')
-          except ValueError:
+    except ValueError:
                  st.error("Invalid input. Please enter numeric values for all features.")
 
 
