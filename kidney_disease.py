@@ -119,8 +119,7 @@ html_temp = """
 
 features_names = ["age","blood pressure","specific gravity","albumin","sugar","red blood cells","pus cell","pus cell clumps","bacteria","blood glucose random","blood urea","serum creatinine","sodium","potassium","hemoglobin","packed cell volume","white blood cell count","red blood cell count","hypertension","diabetes mellitus","coronary artery disease","appetite","pedal edema","anemia"]
 if st.button('Show Feaatures'):
-    for i in freatures_names:
-       st.write(features_names)
+      st.write(features_names)
 # this line allows us to display the front end aspects we have 
 # defined in the above code
 st.markdown(html_temp, unsafe_allow_html = True)
