@@ -54,31 +54,34 @@ Y_pred = model.predict(X_test_std)
 input_value = st.text_input("Enter the features separated by ','")
 
 input_list = input_value.split(',')
+# Create a button for prediction
+    if st.button("Predict"):
+        try:
 
-input_values = [float(input_list[x]) if input_list[x] != '' else np.nan for x in input_value]
-input_data = np.array([input_list], dtype=np.float32)
-st.write(input_data)
+             input_values = [float(input_list[x]) if input_list[x] != '' else np.nan for x in input_value]
+             input_data = np.array([input_list], dtype=np.float32)
+             st.write(input_data)
 
-# change the input_data to a numpy array
-input_data_as_numpy_array = np.asarray(input_data)
+            # change the input_data to a numpy array
+             input_data_as_numpy_array = np.asarray(input_data)
 
-# reshape the numpy array as we are predicting for one data point
-input_data_reshaped = input_data_as_numpy_array.reshape(1,-1)
+             # reshape the numpy array as we are predicting for one data point
+             input_data_reshaped = input_data_as_numpy_array.reshape(1,-1)
 
-# standardizing the input data
-input_data_std = scaler.transform(input_data_reshaped)
+            # standardizing the input data
+             input_data_std = scaler.transform(input_data_reshaped)
 
-prediction = model.predict(input_data_std)
+             prediction = model.predict(input_data_std)
 
-prediction_label = [np.argmax(prediction)]
+             prediction_label = [np.argmax(prediction)]
 
-if(prediction_label[0] == 0):
-  st.write('The tumor is Malignant')
+             if(prediction_label[0] == 0):
+                   st.write('The tumor is Malignant')
 
-else:
-  st.write('The tumor is Benign')
-  except ValueError:
-            st.error("Invalid input. Please enter numeric values for all features.")
+              else:
+                   st.write('The tumor is Benign')
+          except ValueError:
+                 st.error("Invalid input. Please enter numeric values for all features.")
 
 
 
