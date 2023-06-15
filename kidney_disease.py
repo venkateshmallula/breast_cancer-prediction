@@ -107,6 +107,8 @@ loss, accuracy = model.evaluate(x_test, y_test)
 
 Y_pred = model.predict(x_test)
 
+import streamlit as st
+
 # Set the page title
 st.title("Breast Cancer Prediction using Machine Learning")
 html_temp = """
